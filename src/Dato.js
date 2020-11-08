@@ -25,7 +25,6 @@ export default class App extends Component{
   constructor(){
     
     super();
-  
     this.state={
       visible:false,
       empleado: {
@@ -33,18 +32,19 @@ export default class App extends Component{
         nombre: null,
         aPaterno:null,
         aMaterno:null,
-        edad: null,
-        sexo:null,
-        estatura:null,
-        rfc:null,   
-        curp:null,
-        nss:null
+
       },
       selectedEmpleado : {}
     };
 
-    this.items =[
+    
 
+    this.items =[
+      {
+        label: 'Options',
+        items: [{label: 'New', icon: 'pi pi-fw pi-plus',command:()=>{ window.location.hash="/fileupload"; }},
+                {label: 'Delete', icon: 'pi pi-fw pi-trash', url: 'http://primetek.com.tr'}]
+    },
       {
         label: 'Nuevo Empleado',
         icon: 'pi pi-fw pi-plus',
@@ -90,11 +90,7 @@ save(){
         aPaterno:null,
         aMaterno:null,
         edad: null,
-        sexo:null,
-        estatura:null,
-        rfc:null,   
-        curp:null,
-        nss:null
+     
       }
     });
     this.growl.show({severity: 'success', detail: 'Se Guardo Correctamente'});
@@ -118,7 +114,7 @@ delete(){
       <div style={{width:'80%',margin: '0 auto',marginTop: '20px'}}>
         <Menubar model={this.items}/>
         <br/>
-        <Panel header ="Topicos Selectos de TI" >
+        <Panel header ="Desarrollo de Aplicaciones" >
             <DataTable value={this.state.empleados} selectionMode="single" selection={this.state.selectedEmpleado}
             onSelectionChange={e => this.setState({selectedEmpleado: e.value})} >
               <Column field="id" header="ID"></Column>
@@ -126,11 +122,7 @@ delete(){
               <Column field="aPaterno" header="APaterno"></Column>
               <Column field="aMaterno" header="AMaterno"></Column>
               <Column field="edad" header="Edad"></Column>
-              <Column field="sexo" header="Sexo"></Column>
-              <Column field="estatura" header="Estatura"></Column>
-              <Column field="rfc" header="RFC"></Column>
-              <Column field="curp" header="Curp"></Column>
-              <Column field="nss" header="NSS"></Column>
+             
         </DataTable>
        </Panel>
        <Dialog header="Crear Empleado" visible={this.state.visible} style={{width: '400px'}} footer={this.footer} modal={true} onHide={() =>
@@ -282,11 +274,7 @@ delete(){
         aPaterno:null,
         aMaterno:null,
         edad: null,
-        sexo:null,
-        estatura:null,
-        rfc:null,   
-        curp:null,
-        nss:null
+    
       }
     })
   }
@@ -300,11 +288,7 @@ delete(){
         aPaterno:this.state.selectedEmpleado.aPaterno,
         aMaterno:this.state.selectedEmpleado.aMaterno,
         edad:this.state.selectedEmpleado.edad,
-        sexo:this.state.selectedEmpleado.sexo,
-        estatura:this.state.selectedEmpleado.estatura,
-        rfc:this.state.selectedEmpleado.rfc,   
-        curp:this.state.selectedEmpleado.curp,
-        nss:this.state.selectedEmpleado.nss
+       
       }
     })
   }
